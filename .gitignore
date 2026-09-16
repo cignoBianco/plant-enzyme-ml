@@ -122,6 +122,7 @@ artifacts/
 
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/gh13_candidates.csv
 
 data/processed/*
 !data/processed/.gitkeep
