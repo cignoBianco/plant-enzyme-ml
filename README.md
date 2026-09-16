@@ -1,0 +1,1 @@
+Classification of plant glycoside hydrolases from amino acid sequences using protein language model embeddings
