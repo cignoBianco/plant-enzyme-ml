@@ -1,0 +1,5 @@
+protein_id,protein_name,organism,gh_family,ec_number,activity,subfamily,length,md5,source
+Q8GTR4,"pullulanase / isoamylase (LDA;AtPU1;AtLDA;LDA1;At5g04360)","Arabidopsis thaliana",GH13,"3.2.1.41;3.2.1.68","pullulanase;isoamylase",13,965,0F48A37B677FE6B07105A2A1C0E5CF3C,"CAZy;UniProt"
+Q8VZ56,"alpha-amylase (AtAmy1;At4g25000) (apoplast)","Arabidopsis thaliana",GH13,3.2.1.1,"alpha-amylase",6,423,B7442155A66F3BC3DAF0DD8982EDAD42,"CAZy;UniProt"
+A0A178VW25,"At2g39930 (chloroplastic isoamylase 2;AtISA1;Iso1 subunit)","Arabidopsis thaliana",GH13,3.2.1.68,"isoamylase",11,783,ED774D756A77980210D2D32E20DDD5AC,"CAZy;UniProt"
+Q9M0S5,"chloroplastic isoamylase 3 (Isa3;AtISA3;At4g09020)","Arabidopsis thaliana",GH13,3.2.1.68,"isoamylase",11,764,39675D5C27934A33AFBEEECBDD4D81B1,"CAZy;UniProt"

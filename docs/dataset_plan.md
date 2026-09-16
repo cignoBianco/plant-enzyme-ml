@@ -25,9 +25,9 @@ EC number / experimentally characterized activity
 
 ######
 CAZy ID: null
-UniProt accession: 	B0KZK1
-Protein name: α-amylase / allergen (Aca s 4)
-Organism: Acarus siro
-EC number: 	3.2.1.1
-Activity:  α-amylase
-Subfamily: 24
+UniProt accession: 	Q8GTR4
+Protein name:  pullulanase / isoamylase (Lda;AtPU1;AtLDA;LDA1;At5g04360)
+Organism: Arabidopsis thaliana
+EC number: 	3.2.1.41
+Activity:  pullulanase; isoamylase
+Subfamily: 13
