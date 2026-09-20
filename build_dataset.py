@@ -133,6 +133,12 @@ def main() -> None:
         if not candidates_order:
             attempts.append("no uniprot_suggested/uniprot_all — skipping to GenBank")
 
+        # Пробуем ВСЕ ID и складываем все успешные разборы, а не берём первый
+        # попавшийся: иначе можно остановиться на коротком фрагменте (is_fragment)
+        # или неревьюченной записи, хотя следующий ID в списке может быть полной
+        # Swiss-Prot последовательностью. Отбор лучшего — после полного перебора.
+        successes: list[tuple[str, dict]] = []
+
         for acc in candidates_order:
             try:
                 fetched = fetch_uniprot(acc)
@@ -147,13 +153,29 @@ def main() -> None:
                 continue
 
             try:
-                p = parse(fetched)
+                parsed = parse(fetched)
             except InactiveEntry as exc:
                 attempts.append(f"{acc}: {exc}")
                 continue
 
-            entry, used_acc = fetched, acc
-            break
+            attempts.append(f"{acc}: ok (length={parsed['length']}, fragment={parsed['is_fragment']}, reviewed={parsed['reviewed']})")
+            successes.append((acc, parsed))
+
+        if successes:
+            # Скор: не-фрагмент лучше фрагмента, reviewed лучше не-reviewed,
+            # длиннее лучше короче. Так мы не застрянем на первом же ID,
+            # если он оказался обрезанным куском белка.
+            def score(item):
+                acc, p = item
+                return (not p["is_fragment"], p["reviewed"], p["length"])
+
+            used_acc, p = max(successes, key=score)
+            entry = True  # entry уже распарсен в p, дальше используем p напрямую
+            if len(successes) > 1 and used_acc != successes[0][0]:
+                attempts.append(
+                    f"chosen {used_acc} over {successes[0][0]} "
+                    f"(better: non-fragment/reviewed/longer)"
+                )
 
         used_genbank_fallback = False
 
