@@ -5,7 +5,7 @@ import pandas as pd
 
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
 from sklearn.metrics import (
     accuracy_score,
     f1_score,
@@ -134,22 +134,14 @@ assert unique_folds == [0, 1, 2, 3, 4], (
 # MODEL
 # ============================================================
 
-model = Pipeline(
-    [
-        (
-            "scaler",
-            StandardScaler()
-        ),
-        (
-            "classifier",
-            LogisticRegression(
-                max_iter=5000,
-                class_weight="balanced",
-                random_state=RANDOM_STATE,
-            )
-        ),
-    ]
-)
+model = Pipeline([
+    ("scaler", StandardScaler()),
+    ("classifier", LinearSVC(
+        class_weight="balanced",
+        random_state=42,
+        max_iter=10000
+    ))
+])
 
 
 # ============================================================
@@ -378,12 +370,7 @@ print(
 # SAVE RESULTS
 # ============================================================
 
-output_path = (
-    PROJECT_ROOT
-    / "data"
-    / "processed"
-    / "logistic_esm_cv_results.csv"
-)
+output_path = PROJECT_ROOT / "data" / "processed" / "svm_esm_residue_only_cv_results.csv"
 
 results_df.to_csv(
     output_path,
