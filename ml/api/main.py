@@ -94,12 +94,10 @@ def get_embedding(sequence: str):
 
     hidden = outputs.last_hidden_state
 
-    # Remove BOS/EOS tokens.
+    # Убираем BOS/EOS
     residue_embeddings = hidden[:, 1:-1, :]
 
-    embedding = residue_embeddings.mean(
-        dim=1
-    )
+    embedding = residue_embeddings.max(dim=1).values
 
     return embedding.cpu().numpy()
 
