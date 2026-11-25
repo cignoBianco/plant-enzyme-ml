@@ -20,6 +20,11 @@ const navigation = [
         icon: "▤",
     },
     {
+        href: "/bioconversion",
+        label: "Биоконверсия",
+        icon: "♻️",
+    },
+    {
         href: "/proteins",
         label: "Proteins",
         icon: "◉",
@@ -82,8 +87,8 @@ export default function Sidebar() {
                             key={item.href}
                             href={item.href}
                             className={`mb-1 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[10px] transition ${active
-                                    ? "bg-[#e9f7f1] font-semibold text-[#15966e]"
-                                    : "text-[#718078] hover:bg-[#f5f8f6] hover:text-[#314239]"
+                                ? "bg-[#e9f7f1] font-semibold text-[#15966e]"
+                                : "text-[#718078] hover:bg-[#f5f8f6] hover:text-[#314239]"
                                 }`}
                         >
                             <span className="flex w-4 justify-center text-[12px]">

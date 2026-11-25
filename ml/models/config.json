@@ -2,5 +2,10 @@
   "esm_model": "facebook/esm2_t12_35M_UR50D",
   "embedding_dim": 480,
   "pooling": "max",
-  "classes": ["alpha-amylase", "isoamylase", "pullulanase/limit dextrinase"]
+  "classes": [ "cellulases",
+  "xylanases_hemicellulases",
+  "pectinases",
+  "other_glycoside_hydrolases",
+  "lignin_modifying_oxidoreductases",
+  "cell_wall_esterases"]
 }
